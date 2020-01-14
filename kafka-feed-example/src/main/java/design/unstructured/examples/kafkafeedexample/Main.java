@@ -1,4 +1,4 @@
-package design.unstructured.examples.springkafkafeedexample;
+package design.unstructured.examples.kafkafeedexample;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -24,6 +24,8 @@ public class Main {
 
 	@Bean
 	public Function<KStream<String, String>, KStream<String, String>> consumeAndProduce() {
+
+
 
 		return null; // input -> input.foreach((key,value) -> {});
 
