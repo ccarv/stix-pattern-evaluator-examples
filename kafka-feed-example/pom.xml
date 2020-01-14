@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>design.unstructured</groupId>
-        <artifactId>parent</artifactId>
+        <groupId>design.unstructured.examples</groupId>
+        <artifactId>example-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
     <groupId>design.unstructured.examples</groupId>
-    <artifactId>spring-kafka-feed-example</artifactId>
-    <name>Spring Kafka Feed Example</name>
+    <artifactId>kafka-feed-example</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Kafka Feed Example</name>
     <description>A project that demonstrates using the stix-pattern-evaluator library with Kafka Streams</description>
 
     <properties>
@@ -46,13 +46,4 @@
             </exclusions>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
