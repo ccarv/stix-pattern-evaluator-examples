@@ -1,8 +1,7 @@
 package design.unstructured.examples.kafkafeedexample;
 
-import java.util.function.Consumer;
 import java.util.function.Function;
-
+import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,19 +15,7 @@ public class Main {
 	}
 
 	@Bean
-	private Consumer<KStream<String, String>> consume() {
-		return input -> input.foreach((key, value) -> {
-			System.out.println("Key: " + key + " Value: " + value);
-		});
+	public Function<KStream<String, String>, KStream<String, String>> process() {
+		return input -> input.map((key, value) -> new KeyValue<>(value, value)).map((key, value) -> new KeyValue<>(key, value.equals("testing one two three") ? "success!" : "failed"));
 	}
-
-	@Bean
-	public Function<KStream<String, String>, KStream<String, String>> consumeAndProduce() {
-
-
-
-		return null; // input -> input.foreach((key,value) -> {});
-
-	}
-
 }
