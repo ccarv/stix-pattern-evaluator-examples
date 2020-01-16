@@ -16,6 +16,7 @@ public class Main {
 
 	@Bean
 	public Function<KStream<String, String>, KStream<String, String>> process() {
-		return input -> input.map((key, value) -> new KeyValue<>(value, value)).map((key, value) -> new KeyValue<>(key, value.equals("testing one two three") ? "success!" : "failed"));
+		return input -> input.map((key, value) -> new KeyValue<>(key, value.equals("ping!") ? "pong!" : "failed"));
+		// .map((key, value) -> new KeyValue<>(key, value.equals("ping!") ? "pong!" : "failed"));
 	}
 }

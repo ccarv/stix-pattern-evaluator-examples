@@ -2,8 +2,8 @@ spring:
   cloud:
     stream:
       bindings:
-        process-in-0.destination: process-objects
-        process-out-0.destination: process-matched-patterns
+        process-in-0.destination: process-objects-test
+        process-out-0.destination: process-matched-patterns-test
       kafka:
         streams:
           binder:
