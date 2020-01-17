@@ -5,6 +5,7 @@
         <groupId>design.unstructured.examples</groupId>
         <artifactId>example-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>..\</relativePath>
     </parent>
     <artifactId>spe-example-kafka-feed</artifactId>
     <packaging>jar</packaging>

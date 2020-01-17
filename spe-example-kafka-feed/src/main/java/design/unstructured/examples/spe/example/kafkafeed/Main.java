@@ -16,7 +16,7 @@ import design.unstructured.examples.spe.example.Evaluation;
 @SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class})
 
 public class Main {
-
+	
 	private static final Logger logger = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {
