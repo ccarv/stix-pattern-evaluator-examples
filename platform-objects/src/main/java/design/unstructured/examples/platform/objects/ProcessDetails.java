@@ -1,10 +1,10 @@
-package design.unstructured.examples.kafkafeedexample;
+package design.unstructured.examples.platform.objects;
 
 import design.unstructured.stix.evaluator.mapper.annotations.StixObject;
 import design.unstructured.stix.evaluator.mapper.annotations.StixProperty;
 
 @StixObject
-public class ProcessInfo {
+public class ProcessDetails {
 
     private String name;
 

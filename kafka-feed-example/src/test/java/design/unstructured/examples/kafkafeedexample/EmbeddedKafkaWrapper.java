@@ -1,21 +1,12 @@
 package design.unstructured.examples.kafkafeedexample;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
@@ -48,7 +39,8 @@ public abstract class EmbeddedKafkaWrapper {
 
         @Bean
         public ProducerFactory<String, String> producerFactory(@Autowired EmbeddedKafkaBroker embeddedKafka) {
-            return new DefaultKafkaProducerFactory<>(new HashMap<>(KafkaTestUtils.producerProps(embeddedKafka)), new StringSerializer(), new StringSerializer());
+            return new DefaultKafkaProducerFactory<>(new HashMap<>(KafkaTestUtils.producerProps(embeddedKafka)), new StringSerializer(),
+                    new StringSerializer());
         }
 
         @Bean
