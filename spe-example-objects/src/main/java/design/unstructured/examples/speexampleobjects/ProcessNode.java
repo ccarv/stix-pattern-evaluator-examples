@@ -1,7 +1,11 @@
-package design.unstructured.examples.platform.objects;
+package design.unstructured.examples.speexampleobjects;
 
 import design.unstructured.stix.evaluator.mapper.annotations.StixEntity;
 import design.unstructured.stix.evaluator.mapper.annotations.StixProperty;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Process

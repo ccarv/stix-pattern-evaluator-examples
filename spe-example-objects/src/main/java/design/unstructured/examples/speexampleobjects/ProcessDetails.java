@@ -1,5 +1,4 @@
-package design.unstructured.examples.platform.objects;
-
+package design.unstructured.examples.speexampleobjects;
 import design.unstructured.stix.evaluator.mapper.annotations.StixObject;
 import design.unstructured.stix.evaluator.mapper.annotations.StixProperty;
 

@@ -6,16 +6,16 @@
         <artifactId>example-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>kafka-feed-example</artifactId>
+    <artifactId>spe-example-kafka-feed</artifactId>
     <packaging>jar</packaging>
-    <name>Kafka Feed Example</name>
+    <name>SPE Example Kafka Feed</name>
     <description>A project that demonstrates using the stix-pattern-evaluator library with Kafka Streams</description>
 
     <dependencies>
         <!-- Internal Dependencies -->
         <dependency>
             <groupId>design.unstructured.examples</groupId>
-            <artifactId>platform-objects</artifactId>
+            <artifactId>spe-example-objects</artifactId>
         </dependency>
 
         <!-- SPE Dependencies -->

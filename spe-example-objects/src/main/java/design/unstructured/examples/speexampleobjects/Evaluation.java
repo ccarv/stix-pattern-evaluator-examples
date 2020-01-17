@@ -1,4 +1,4 @@
-package design.unstructured.examples.platform.objects;
+package design.unstructured.examples.speexampleobjects;
 
 /**
  * Evaluation

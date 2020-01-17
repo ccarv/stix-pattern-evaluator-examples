@@ -1,4 +1,4 @@
-package design.unstructured.examples.kafkafeedexample;
+package design.unstructured.examples.speexamplekafkafeed;
 
 import java.util.HashMap;
 import java.util.Map;

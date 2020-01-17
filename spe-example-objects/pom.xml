@@ -6,9 +6,9 @@
         <artifactId>example-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>platform-objects</artifactId>
+    <artifactId>spe-example-objects</artifactId>
     <packaging>jar</packaging>
-    <name>Platform Objects</name>
+    <name>SPE Example Objects</name>
 
     <dependencies>
         <!-- SPE Dependencies -->

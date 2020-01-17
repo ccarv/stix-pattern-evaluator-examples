@@ -1,4 +1,4 @@
-package design.unstructured.examples.kafkafeedexample;
+package design.unstructured.examples.speexamplekafkafeed;
 
 import java.util.function.Function;
 import org.apache.kafka.streams.KeyValue;
@@ -10,8 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import design.unstructured.examples.platform.objects.ProcessNode;
-import design.unstructured.examples.platform.objects.Evaluation;
 
 @SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class})
 

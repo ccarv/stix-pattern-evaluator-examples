@@ -20,15 +20,15 @@
     </properties>
 
     <modules>
-        <module>kafka-feed-example</module>
-        <module>platform-objects</module>
+        <module>spe-example-kafka-feed</module>
+        <module>spe-example-objects</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>design.unstructured.examples</groupId>
-                <artifactId>platform-objects</artifactId>
+                <artifactId>spe-example-objects</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
