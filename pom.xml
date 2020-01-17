@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.2.1.RELEASE</version>
         <relativePath />
     </parent>
     <groupId>design.unstructured.examples</groupId>
@@ -22,6 +22,7 @@
     <modules>
         <module>spe-example-kafka-feed</module>
         <module>spe-example-objects</module>
+        <module>test-module</module>
     </modules>
 
     <dependencyManagement>

@@ -1,4 +1,4 @@
-package design.unstructured.examples.speexamplekafkafeed;
+package design.unstructured.examples.spe.example.kafkafeed;
 
 import java.util.Arrays;
 import org.apache.kafka.clients.consumer.Consumer;
