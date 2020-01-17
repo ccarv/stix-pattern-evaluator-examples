@@ -10,13 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import design.unstructured.examples.spe.example.ProcessNode;
-import design.unstructured.examples.spe.example.Evaluation;
+import design.unstructured.examples.spe.example.objects.ProcessNode;
+import design.unstructured.examples.spe.example.objects.Evaluation;
 
 @SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class})
 
 public class Main {
-	
+
 	private static final Logger logger = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {

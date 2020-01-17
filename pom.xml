@@ -22,7 +22,6 @@
     <modules>
         <module>spe-example-kafka-feed</module>
         <module>spe-example-objects</module>
-        <module>test-module</module>
     </modules>
 
     <dependencyManagement>
