@@ -25,7 +25,7 @@ class KafkaFeedTest extends EmbeddedKafkaWrapper {
 
 		consumer.subscribe(Arrays.asList("process-matched-patterns-test"));
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			logger.info("Sending (HOST-{}): ping!", i);
 			kafkaTemplate.send(new ProducerRecord<String, String>("process-objects-test", "HOST-" + i,
 					"{\"info\":{\"name\":\"cmd.exe\",\"path\":\"C:\\\\Windows\\\\System32\",\"commandLine\":\"cmd.exe --noprofile\",\"id\":598},\"children\":[{\"info\":{\"name\":\"ping.exe\",\"path\":\"C:\\\\Windows\\\\System32\",\"commandLine\":\"ping.exe google.com -t\",\"id\":587}},{\"info\":{\"name\":\"fdisk.exe\",\"path\":\"C:\\\\Windows\\\\System32\",\"commandLine\":\"fdisk.exe /format /reinstall\",\"id\":232}},{\"info\":{\"name\":\"nestat.exe\",\"path\":\"C:\\\\Windows\\\\System32\",\"commandLine\":\"netstat.exe --stuff\",\"id\":995}}]}"));
