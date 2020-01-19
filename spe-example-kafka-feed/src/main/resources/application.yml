@@ -1,3 +1,5 @@
+kafka-feed:
+  object-package: design.unstructured.examples.spe.example.objects
 spring:
   cloud:
     stream:

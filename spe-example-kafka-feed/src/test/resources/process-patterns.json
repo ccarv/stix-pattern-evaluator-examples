@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Basic comparison for process name test",
+        "description": "A basic test pattern to evaluate string comparison",
+        "pattern": "[process:name = 'cmd.exe']",
+        "active": true
+    },
+    {
+        "name": "AND comparator with regular expression MATCHES test",
+        "description": "A test for the AND comparator with a compiled Java regular expression from the MATCHES comparator",
+        "pattern": "[process:name = 'cmd.exe' AND process:command_line MATCHES '.*(http|ftp|https)://([\\\\w_-]+(?:(?:\\\\.[\\\\w_-]+)+))([\\\\w.,@?^=%&:/~+#-]*[\\\\w@?^=%&/~+#-])?.*']",
+        "active": true
+    }
+]

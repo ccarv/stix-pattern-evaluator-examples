@@ -3,14 +3,12 @@ package design.unstructured.examples.spe.example.objects;
 import design.unstructured.stix.evaluator.mapper.annotations.StixEntity;
 import design.unstructured.stix.evaluator.mapper.annotations.StixProperty;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 /**
  * Process
  */
-@StixEntity
+@StixEntity(name = "process")
 public class ProcessNode {
     @StixProperty(name = {"parent_ref"})
     private ProcessNode parent;
@@ -44,5 +42,13 @@ public class ProcessNode {
 
     public void setTestValue(String testValue) {
         this.testValue = testValue;
+    }
+
+    public List<ProcessNode> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<ProcessNode> children) {
+        this.children = children;
     }
 }
