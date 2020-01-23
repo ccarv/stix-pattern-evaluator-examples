@@ -13,6 +13,8 @@ public class Indicator {
 
     private String description;
 
+    private String data;
+
     private String pattern;
 
     private Pattern parsedPattern;
@@ -62,5 +64,13 @@ public class Indicator {
     @JsonProperty
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

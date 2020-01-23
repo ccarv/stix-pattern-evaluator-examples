@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Powershell Execution (CAR-2014-04-003)",
+        "description": "Powershell has been executed by a process other than EXPLORER.EXE",
+        "pattern": "[process:name = 'powershell.exe' AND process:parent_ref.name MATCHES '.+']"
+    },
+    {
+        "name": "Suspicious Arguments (CAR-2013-07-001)",
+        "description": "Process executed with suspicious command line arguments",
+        "pattern": "[(process:command_line MATCHES '.*\\\\s+-R\\\\s+.*' AND process:command_line MATCHES '.*\\\\s+-pw\\\\s+.*') OR (process:command_line MATCHES '.*\\\\s+-pw\\\\s+.*' AND process:command_line MATCHES '.*\\\\s+sekurla.*') OR (process:command_line MATCHES '.*\\\\s+-hp.*') OR (process:command_line MATCHES '.*\\\\s+\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}.*')]"
+    },
+    {
+        "name": "Service Outlier Executable (CAR-2013-09-005)",
+        "description": "Non-installer process created a new service",
+        "pattern": "[process:name = 'sc.exe' AND process:command_line MATCHES '^.*\\\\s+create\\\\s+.*' AND process:parent_ref.name != 'msiexec.exe']"
+    },
+    {
+        "name": "Remote Powershell Session (CAR-2014-11-004)",
+        "description": "Process invoking Powershell session on a remote host",
+        "pattern": "[process:name = 'wsmprovhost.exe' AND process:parent_ref.name = 'svchost.exe']"
+    },
+    {
+        "name": "Debugger Execution For Accessibility Program (CAR-2014-11-003)",
+        "description": "Process appears to be executing an accessibility program via the Windows Debugger",
+        "pattern": "[process:command_line MATCHES '.*\\\\s+.*(sethc|utilman|osk|narrator|magnify)\\\\.exe.*']"
+    },
+    {
+        "name": "Execution Via SCHTASKS (CAR-2013-08-001)",
+        "description": "Process is executing via SCHTASKS.EXE",
+        "pattern": "[process:name = 'schtasks.exe']"
+    }
+]

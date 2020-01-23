@@ -1,47 +1,22 @@
 [
     {
-        "name": "Basic comparison for process name test",
-        "description": "A basic test pattern to evaluate string comparison",
+        "name": "Command prompt executed",
+        "description": "Command prompt started",
         "pattern": "[process:name = 'cmd.exe']"
     },
     {
-        "name": "AND comparator with regular expression MATCHES test",
-        "description": "A test for the AND comparator with a compiled Java regular expression from the MATCHES comparator",
-        "pattern": "[process:name = 'cmd.exe' AND process:command_line MATCHES '.*(http|ftp|https)://([\\\\w_-]+(?:(?:\\\\.[\\\\w_-]+)+))([\\\\w.,@?^=%&:/~+#-]*[\\\\w@?^=%&/~+#-])?.*']"
+        "name": "A Network Service svchost.exe started",
+        "description": "A Windows networking service has started.",
+        "pattern": "[process:name = 'svchost.exe' AND process:command_line MATCHES '.*-k NetworkService.*']"
     },
     {
-        "name": "AND comparator with observable parent depth test",
-        "description": "A test for the AND comparator and parent relationship",
-        "pattern": "[process:parent.name = 'explorer.exe' AND process:name = 'cmd.exe']"
+        "name": "Test",
+        "description": "Test",
+        "pattern": "[process:parent_ref.name = 'fish.exe' AND process:name = 'cmd.exe']"
     },
     {
-        "name": "Process IN set comparison test",
-        "description": "A test to verify if the IN is properly evaluated as a set",
-        "pattern": "[process:name_in_test IN ('not_this_one.exe', 'or_this_one.exe', 'definitely_not_this_one.exe', 'looking_for_this_process_name.exe')]"
-    },
-    {
-        "name": "Int literal greater than test",
-        "description": "A test to verify the greater than using an int literal",
-        "pattern": "[process:id > 458]"
-    },
-    {
-        "name": "Int literal greater than or equal test",
-        "description": "A test to verify the greater than using an int literal",
-        "pattern": "[process:id >= 459]"
-    },
-    {
-        "name": "Int literal less than test",
-        "description": "A test to verify the greater than using an int literal",
-        "pattern": "[process:id < 460]"
-    },
-    {
-        "name": "Int literal less than or equal test",
-        "description": "A test to verify the greater than using an int literal",
-        "pattern": "[process:id <= 459]"
-    },
-    {
-        "name": "Nested OR expression with multiple conditions",
-        "description": "A test to verify multiple conditions with multiple nested expressions",
-        "pattern": "[process:name = 'cmd.exe' OR process:name = 'notthis.exe'] AND [process:parent.name = 'explorer.exe']"
+        "name": "Suspicious Command Executed",
+        "description": "Process is executing a potentially suspicious command",
+        "pattern": "[process:name IN ('arp.exe', 'at.exe', 'attrib.exe', 'cscript.exe', 'dsquery.exe', 'hostname.exe','ipconfig.exe', 'mimikatz.exe', 'nbstat.exe', 'net.exe', 'netsh.exe', 'nslookup.exe','ping.exe', 'quser.exe', 'qwinsta.exe', 'reg.exe', 'runas.exe', 'sc.exe','schtasks.exe', 'ssh.exe', 'systeminfo.exe', 'taskkill.exe', 'telnet.exe','tracert.exe', 'wscript.exe', 'xcopy.exe')]"
     }
 ]

@@ -1,14 +1,22 @@
 [
     {
-        "name": "Basic comparison for process name test",
-        "description": "A basic test pattern to evaluate string comparison",
-        "pattern": "[process:name = 'cmd.exe']",
-        "active": true
+        "name": "Command prompt executed",
+        "description": "Command prompt started",
+        "pattern": "[process:name = 'cmd.exe']"
     },
     {
-        "name": "AND comparator with regular expression MATCHES test",
-        "description": "A test for the AND comparator with a compiled Java regular expression from the MATCHES comparator",
-        "pattern": "[process:name = 'cmd.exe' AND process:command_line MATCHES '.*(http|ftp|https)://([\\\\w_-]+(?:(?:\\\\.[\\\\w_-]+)+))([\\\\w.,@?^=%&:/~+#-]*[\\\\w@?^=%&/~+#-])?.*']",
-        "active": true
+        "name": "A Network Service svchost.exe started",
+        "description": "A Windows networking service has started.",
+        "pattern": "[process:name = 'svchost.exe' AND process:command_line MATCHES '.*-k NetworkService.*']"
+    },
+    {
+        "name": "Parent ref test",
+        "description": "A simple test to verify parent relationships are observable",
+        "pattern": "[process:parent_ref.name = 'fish.exe' AND process:name = 'cmd.exe']"
+    },
+    {
+        "name": "Suspicious Command Executed",
+        "description": "Process is executing a potentially suspicious command",
+        "pattern": "[process:name IN ('arp.exe', 'at.exe', 'attrib.exe', 'cscript.exe', 'dsquery.exe', 'hostname.exe','ipconfig.exe', 'mimikatz.exe', 'nbstat.exe', 'net.exe', 'netsh.exe', 'nslookup.exe','ping.exe', 'quser.exe', 'qwinsta.exe', 'reg.exe', 'runas.exe', 'sc.exe','schtasks.exe', 'ssh.exe', 'systeminfo.exe', 'taskkill.exe', 'telnet.exe','tracert.exe', 'wscript.exe', 'xcopy.exe')]"
     }
 ]

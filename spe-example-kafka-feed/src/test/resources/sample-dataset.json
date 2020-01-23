@@ -1,0 +1,5 @@
+{"activeEvents":{"4688":1}, "info": {"name": "cmd.exe","path": "C:\\Windows\\System32","commandLine": "cmd.exe --noprofile","id": 598}}
+{"activeEvents":{"4689":1},"info":{"name":"fish.exe","path":"C:\\Windows\\System32","commandLine":"cmd.exe --noprofile","id":598},"children":[{"activeEvents":{"4688":1},"info":{"name":"powershell.exe","path":"C:\\Windows\\System32","commandLine":"powershell.exe -pw passingpassword","id":598}},{"activeEvents":{"4688":1},"info":{"name":"cmd.exe","path":"C:\\Windows\\System32","commandLine":"narrator.exe","id":598}}]}
+{"activeEvents":{"4688":1}, "info": {"name": "passtool.exe","path": "C:\\Users\\admin\\Desktop","commandLine": "cmd.exe \\s-pw\\s obfuscatedpass","id": 598}}
+{"activeEvents":{"4688":1}, "info": {"name": "arp.exe","path": "C:\\Windows\\System32","commandLine": "arp.exe \\s-pw\\s sendingpassthrougharp","id": 598}}
+{"activeEvents":{"4688":1}, "info": {"name": "schtasks.exe","path": "C:\\Windows\\System32","commandLine": "schtasks.exe","id": 598}}

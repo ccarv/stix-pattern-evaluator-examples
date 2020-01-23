@@ -17,6 +17,10 @@
             <groupId>design.unstructured</groupId>
             <artifactId>stix-pattern-evaluator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

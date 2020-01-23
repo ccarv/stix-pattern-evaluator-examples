@@ -2,7 +2,7 @@ kafka-feed:
   stix-object-package: design.unstructured.examples.spe.example.objects
   indicator-files:
     - classpath:process-patterns.json
-    - classpath:file-patterns.json
+    - classpath:car-patterns.json
 spring:
   cloud:
     stream:

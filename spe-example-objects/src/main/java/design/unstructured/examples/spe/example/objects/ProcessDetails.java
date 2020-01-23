@@ -15,6 +15,9 @@ public class ProcessDetails {
 
     private String commandLine;
 
+    @StixProperty(name = "x_run_as_administrator")
+    private Boolean administrator;
+
     public String getName() {
         return name;
     }

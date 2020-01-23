@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
-import design.unstructured.stix.evaluator.mapper.StixMapper;
+import design.unstructured.stix.evaluator.mapper.StixObservableMapper;
 import design.unstructured.stix.evaluator.mapper.annotations.StixEntity;
 import design.unstructured.stix.evaluator.mapper.annotations.StixObject;
 
@@ -30,8 +30,11 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public StixMapper mapper() {
-        return new StixMapper(this.getClassFromAnnotation());
+    public StixObservableMapper mapper() {
+        StixObservableMapper mapper = new StixObservableMapper(this.getClassFromAnnotation());
+        mapper.addPathFilter("binary_ref");
+
+        return mapper;
     }
 
     public Set<Class<?>> getClassFromAnnotation() {
