@@ -2,13 +2,14 @@ package design.unstructured.examples.spe.example.kafkafeed;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
+
 import design.unstructured.stix.evaluator.mapper.StixObservableMapper;
 import design.unstructured.stix.evaluator.mapper.annotations.StixEntity;
 import design.unstructured.stix.evaluator.mapper.annotations.StixObject;
@@ -16,18 +17,13 @@ import design.unstructured.stix.evaluator.mapper.annotations.StixObject;
 /**
  * ApplicationConfiguration
  */
+@Configuration
 @ConfigurationProperties("kafka-feed")
 public class ApplicationConfiguration {
 
-    private final String stixObjectPackage;
+    private String stixObjectPackage;
 
-    private final String[] indicatorFiles;
-
-    @ConstructorBinding
-    public ApplicationConfiguration(String stixObjectPackage, String[] indicatorFiles) {
-        this.stixObjectPackage = stixObjectPackage;
-        this.indicatorFiles = indicatorFiles;
-    }
+    private String[] indicatorFiles;
 
     @Bean
     public StixObservableMapper mapper() {
@@ -60,6 +56,14 @@ public class ApplicationConfiguration {
 
     public String[] getIndicatorFiles() {
         return indicatorFiles;
+    }
+
+    public void setStixObjectPackage(String stixObjectPackage) {
+        this.stixObjectPackage = stixObjectPackage;
+    }
+
+    public void setIndicatorFiles(String[] indicatorFiles) {
+        this.indicatorFiles = indicatorFiles;
     }
 
 }

@@ -1,5 +1,5 @@
 kafka-feed:
-  object-package: design.unstructured.examples.spe.example.objects
+  stix-object-package: design.unstructured.examples.spe.example.objects
   indicator-files:
     - classpath:process-patterns.json
     - classpath:car-patterns.json

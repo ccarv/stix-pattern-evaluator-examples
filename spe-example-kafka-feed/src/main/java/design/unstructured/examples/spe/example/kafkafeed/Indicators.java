@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ public class Indicators extends ArrayList<Indicator> {
 
     @PostConstruct
     public void load() throws JsonParseException, JsonMappingException, IOException {
-        ObjectMapper jsonMapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);;
+        ObjectMapper jsonMapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         for (String fileString : configuration.getIndicatorFiles()) {
             this.addAll(Arrays.asList(jsonMapper.readValue(resourceLoader.getResource(fileString).getInputStream(), Indicator[].class)));

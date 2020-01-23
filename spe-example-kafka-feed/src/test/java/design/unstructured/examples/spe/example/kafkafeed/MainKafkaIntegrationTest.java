@@ -30,10 +30,16 @@ import design.unstructured.examples.spe.example.objects.ProcessNode;
 @SpringBootTest(properties = {"spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}"},
 		classes = {Main.class, KafkaAutoConfiguration.class})
 @EmbeddedKafka(partitions = 1, topics = {"process-objects-test", "process-matched-patterns-test"})
-class MainKafkaTest extends EmbeddedKafkaWrapper {
+class MainKafkaIntegrationTest extends EmbeddedKafkaWrapper {
 
-	private static final Logger logger = LogManager.getLogger(MainKafkaTest.class);
+	private static final Logger logger = LogManager.getLogger(MainKafkaIntegrationTest.class);
 
+	/**
+	 * This unit test is really the only unit test we will need to verify whether the KStream / Spring
+	 * Cloud implementation is working properly.
+	 * 
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void kafkaCircuitTest() throws InterruptedException {
 		Consumer<String, String> consumer = new KafkaFactoryProvider().consumerFactory(embeddedKafka).createConsumer();
@@ -51,7 +57,7 @@ class MainKafkaTest extends EmbeddedKafkaWrapper {
 				logger.info("Receiving ({}): {}", record.key(), record.value());
 				receivedPongs++;
 			} catch (IllegalStateException ex) {
-				logger.warn("Pong was not received: getSingleRecord(...) timed out, no records consumed.");
+				logger.warn("getSingleRecord(...) timed out, no records consumed.");
 			}
 		}
 
@@ -59,6 +65,12 @@ class MainKafkaTest extends EmbeddedKafkaWrapper {
 		consumer.close();
 	}
 
+	/**
+	 * Simple throughput test with no expectations, yet.
+	 * 
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void sampleDatasetTest() throws IOException, InterruptedException {
 		final Consumer<String, String> consumer = new KafkaFactoryProvider().consumerFactory(embeddedKafka).createConsumer();
@@ -66,7 +78,7 @@ class MainKafkaTest extends EmbeddedKafkaWrapper {
 
 		ObjectMapper mapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		ObjectReader reader = mapper.readerFor(ProcessNode.class);
-		Scanner scanner = new Scanner(MainKafkaTest.class.getResourceAsStream("/sample-dataset.json"));
+		Scanner scanner = new Scanner(MainKafkaIntegrationTest.class.getResourceAsStream("/sample-dataset.json"));
 
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
@@ -87,7 +99,7 @@ class MainKafkaTest extends EmbeddedKafkaWrapper {
 				});
 
 			} catch (IllegalStateException ex) {
-				logger.warn("Pong was not received: getSingleRecord(...) timed out, no records consumed.");
+				logger.warn("getSingleRecord(...) timed out, no records consumed.");
 			}
 		}
 
