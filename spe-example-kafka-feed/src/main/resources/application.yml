@@ -1,6 +1,13 @@
+test:
+  path:
+    test: testvalue
+    patterns:
+      - test1
+      - test2
 kafka-feed:
   stix-object-package: design.unstructured.examples.spe.example.objects
-  indicator-files:
+  test: propertiesWork
+  patterns:
     - classpath:process-patterns.json
     - classpath:car-patterns.json
 spring:

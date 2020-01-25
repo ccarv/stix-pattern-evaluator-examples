@@ -28,8 +28,8 @@ public abstract class EmbeddedKafkaWrapper {
     @Autowired
     EmbeddedKafkaBroker embeddedKafka;
 
-    @Autowired
-    KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
+    // @Autowired
+    // KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
 
     @Autowired
     KafkaTemplate<String, String> kafkaTemplate;
@@ -58,10 +58,12 @@ public abstract class EmbeddedKafkaWrapper {
         }
     }
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry.getListenerContainers()) {
-            ContainerTestUtils.waitForAssignment(messageListenerContainer, embeddedKafka.getPartitionsPerTopic());
-        }
-    }
+    // @BeforeEach
+    // public void setUp() throws Exception {
+    // for (MessageListenerContainer messageListenerContainer :
+    // kafkaListenerEndpointRegistry.getListenerContainers()) {
+    // ContainerTestUtils.waitForAssignment(messageListenerContainer,
+    // embeddedKafka.getPartitionsPerTopic());
+    // }
+    // }
 }

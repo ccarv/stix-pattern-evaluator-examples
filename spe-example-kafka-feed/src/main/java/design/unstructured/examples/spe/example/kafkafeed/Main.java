@@ -21,7 +21,7 @@ import design.unstructured.stix.evaluator.PatternEvaluator;
 import design.unstructured.stix.evaluator.mapper.StixObservableMapper;
 
 @SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class})
-@EnableConfigurationProperties(ApplicationConfiguration.class)
+@EnableConfigurationProperties(KafkaFeedConfiguration.class)
 public class Main {
 
 	private static final Logger logger = LogManager.getLogger(Main.class);

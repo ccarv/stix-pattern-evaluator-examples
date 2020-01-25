@@ -3,9 +3,7 @@ package design.unstructured.examples.spe.example.kafkafeed;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -34,6 +32,8 @@ class MainKafkaIntegrationTest extends EmbeddedKafkaWrapper {
 
 	private static final Logger logger = LogManager.getLogger(MainKafkaIntegrationTest.class);
 
+
+
 	/**
 	 * This unit test is really the only unit test we will need to verify whether the KStream / Spring
 	 * Cloud implementation is working properly.
@@ -53,7 +53,7 @@ class MainKafkaIntegrationTest extends EmbeddedKafkaWrapper {
 					"{\"activeEvents\":{\"4688\":1,\"4656\":9,\"4690\":9,\"4663\":8}, \"info\": {\"name\": \"cmd.exe\",\"path\": \"C:\\\\Windows\\\\System32\",\"commandLine\": \"cmd.exe --noprofile\",\"id\": 598}}"));
 
 			try {
-				ConsumerRecord<String, String> record = KafkaTestUtils.getSingleRecord(consumer, "process-matched-patterns-test", 1000);
+				ConsumerRecord<String, String> record = KafkaTestUtils.getSingleRecord(consumer, "process-matched-patterns-test", 3000);
 				logger.info("Receiving ({}): {}", record.key(), record.value());
 				receivedPongs++;
 			} catch (IllegalStateException ex) {
@@ -66,12 +66,13 @@ class MainKafkaIntegrationTest extends EmbeddedKafkaWrapper {
 	}
 
 	/**
-	 * Simple throughput test with no expectations, yet.
+	 * Simple throughput test with no expectations, yet. Still a WIP. Commenting out the @Test
+	 * annotation so it does not get run with mvn test.
 	 * 
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	@Test
+	// @Test
 	public void sampleDatasetTest() throws IOException, InterruptedException {
 		final Consumer<String, String> consumer = new KafkaFactoryProvider().consumerFactory(embeddedKafka).createConsumer();
 		consumer.subscribe(Arrays.asList("process-matched-patterns-test"));
@@ -102,8 +103,6 @@ class MainKafkaIntegrationTest extends EmbeddedKafkaWrapper {
 				logger.warn("getSingleRecord(...) timed out, no records consumed.");
 			}
 		}
-
-		Thread.sleep(100000);
 
 		scanner.close();
 		consumer.close();
