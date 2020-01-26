@@ -2,22 +2,19 @@ package design.unstructured.examples.spe.example.kafkafeed;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import org.springframework.kafka.listener.MessageListenerContainer;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
-import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 
 /**
@@ -27,9 +24,6 @@ public abstract class EmbeddedKafkaWrapper {
 
     @Autowired
     EmbeddedKafkaBroker embeddedKafka;
-
-    // @Autowired
-    // KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
 
     @Autowired
     KafkaTemplate<String, String> kafkaTemplate;
@@ -58,12 +52,4 @@ public abstract class EmbeddedKafkaWrapper {
         }
     }
 
-    // @BeforeEach
-    // public void setUp() throws Exception {
-    // for (MessageListenerContainer messageListenerContainer :
-    // kafkaListenerEndpointRegistry.getListenerContainers()) {
-    // ContainerTestUtils.waitForAssignment(messageListenerContainer,
-    // embeddedKafka.getPartitionsPerTopic());
-    // }
-    // }
 }
