@@ -21,6 +21,7 @@
 
     <modules>
         <module>spe-example-kafka-feed</module>
+        <module>spe-example-kafka-server</module>
         <module>spe-example-objects</module>
     </modules>
 

@@ -10,8 +10,8 @@
         "pattern": "[process:name = 'svchost.exe' AND process:command_line MATCHES '.*-k NetworkService.*']"
     },
     {
-        "name": "Test",
-        "description": "Test",
+        "name": "Parent ref test",
+        "description": "A simple test to verify parent relationships are observable",
         "pattern": "[process:parent_ref.name = 'fish.exe' AND process:name = 'cmd.exe']"
     },
     {

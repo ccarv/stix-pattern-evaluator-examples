@@ -2,9 +2,10 @@ package design.unstructured.examples.spe.example.kafkafeed;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.function.Function;
 
-import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,16 +33,34 @@ public class Main {
     @Autowired
     private Indicators indicators;
 
+    private static Long processedRecords = 0L;
+
     public static void main(String[] args) {
+
+        Timer timer = new Timer("Timer");
+        long delay = 5000L;
+        long period = 5000L;
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                if (processedRecords != 0) {
+                    logger.info("processed {} records in 5 seconds, {} eps...", processedRecords, processedRecords / 5);
+                    processedRecords = 0L;
+                }
+            }
+        }, delay, period);
+
         SpringApplication.run(Main.class, args);
     }
 
     @Bean
-    public Function<KStream<String, ProcessNode>, KStream<String, List<? extends Indicator>>> process() {
-        return input -> input.map((host, process) -> this.analyze(host, process)).filter((host, evaluation) -> evaluation != null);
+    public Function<KStream<String, ProcessNode>, KStream<String, List<IndicatorEvaluation>>> process() {
+        return input -> input.mapValues(this::analyze).filter((host, evaluation) -> evaluation != null);
     }
 
-    public KeyValue<String, List<? extends Indicator>> analyze(String host, ProcessNode process) {
+    public List<IndicatorEvaluation> analyze(final String host, ProcessNode process) {
+        processedRecords++;
+
         List<IndicatorEvaluation> detectedIndicators = new ArrayList<>();
         List<ProcessNode> activeProcessNodes = process.filter((node) -> node.getActiveEvents().containsKey("4688"));
 
@@ -65,6 +84,6 @@ public class Main {
             }
         }
 
-        return new KeyValue<>(host, detectedIndicators.isEmpty() ? null : detectedIndicators);
+        return detectedIndicators.isEmpty() ? null : detectedIndicators;
     }
 }
